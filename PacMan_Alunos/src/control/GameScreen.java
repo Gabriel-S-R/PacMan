@@ -31,11 +31,22 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     
     private final Pacman pacman;
     private final Pinky pinky;
+    private int nivel = 1;
     //private final ArrayList<Element> arrayElem;                        //Array que representa os elementos da interface.
     private final GameController controller = new GameController();   
-    Stages stages = new Stages(1);
+    Stages stages = new Stages(nivel);
     Timer timer;
 
+    public void passarNivel(){
+        this.nivel++;
+        stages = new Stages(nivel);
+        repaint();
+    }
+    
+    public int getNivel(){
+        return nivel;
+    }
+    
     public GameScreen() {
         Drawing.setGameScreen(this);
         initComponents();
@@ -144,7 +155,6 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         
         this.controller.drawAllElements(stages.elemArray, g2);
         this.controller.processAllElements(stages.elemArray);
-       // this.setTitle("-> Cell: " + pacman.getStringPosition());
        
         g.dispose();
         g2.dispose();

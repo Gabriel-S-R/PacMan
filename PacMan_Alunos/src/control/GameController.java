@@ -7,6 +7,7 @@ import elements.Pacdots;
 import elements.Pacman;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import utils.Drawing;
 
 /**
  * Projeto de POO 2017
@@ -17,11 +18,11 @@ import java.util.ArrayList;
 public class GameController {
     
     public void drawAllElements(ArrayList<Element> elemArray, Graphics g){
-        for(int i=2; i<elemArray.size(); i++){
+        for(int i=3; i<elemArray.size(); i++){
             elemArray.get(i).autoDraw(g);
         }
         
-        for(int i=0; i<2; i++){
+        for(int i=0; i<3; i++){
             elemArray.get(i).autoDraw(g);
         }
     }
@@ -67,10 +68,10 @@ public class GameController {
                 else if(eTemp.isTransposable()){
                     e.remove(eTemp);
                     if(eTemp instanceof Pacdots){
-                       System.out.println(Pacdots.getNumeroPacdots());
                        Pacdots.removerPacdot();
                        if(Pacdots.getNumeroPacdots() == 0)
-                           System.out.println("Uhul");
+                           if(Drawing.getGameScreen().getNivel() < 3)
+                                Drawing.getGameScreen().passarNivel();
                     }
                 }
         }
