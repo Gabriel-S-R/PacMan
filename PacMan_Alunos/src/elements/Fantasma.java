@@ -94,17 +94,17 @@ public abstract class Fantasma extends Element implements Serializable{
             
             int j = gerador.nextInt(4000);
             
-            if(j>0 && j<1000)
-            this.setMovDirection(1);
+            if(j>0 && j<=1000)
+                this.setMovDirection(1);
             
-            if(j>1000 && j<2000)
-            this.setMovDirection(2);
+            if(j>1000 && j<=2000)
+                this.setMovDirection(2);
             
-            if(j>2000 && j<3000)
-            this.setMovDirection(3);
+            if(j>2000 && j<=3000)
+                this.setMovDirection(3);
             
-            if(j>3000 && j<4000)
-            this.setMovDirection(4);
+            if(j>3000 && j<=4000)
+                this.setMovDirection(4);
     }
             
     public void moveAleatorio(){        

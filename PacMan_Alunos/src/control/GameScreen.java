@@ -32,6 +32,7 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     private final Pinky pinky;
     private final ArrayList<Element> elemArray;                        //Array que representa os elementos da interface.
     private final GameController controller = new GameController();    
+    Timer timer;
 
     public GameScreen() {
         Drawing.setGameScreen(this);
@@ -102,9 +103,8 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         }
        
         //Fruta
-        Fruta fruta = new Fruta("fruta.png");
-        fruta.setPosition(3, 1);
-        this.addElement(fruta);
+        Fruta f = new Fruta("fruta.png");
+        f.setTimerFruta();
         
         Bloco vbloco = new Bloco("blocovertical.png");
                 vbloco.setPosition(5, 1);
