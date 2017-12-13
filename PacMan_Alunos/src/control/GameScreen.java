@@ -55,7 +55,7 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         
             //Pinky
         pinky = new Pinky("pinky.png");
-        pinky.setPosition(13, 13);
+        pinky.setPosition(12, 13);
         this.addElement(pinky);
         
         //Blocos horizontais
@@ -91,6 +91,7 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
             }
         }
         
+        
         //Pacdots
         for(int i=3; i<Consts.NUM_CELLS; i = i+2){
             for(int j=1; j<Consts.NUM_CELLS;j = j+2){
@@ -104,6 +105,10 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         Fruta fruta = new Fruta("fruta.png");
         fruta.setPosition(3, 1);
         this.addElement(fruta);
+        
+        Bloco vbloco = new Bloco("blocovertical.png");
+                vbloco.setPosition(5, 1);
+                this.addElement(vbloco);
         
     }
     

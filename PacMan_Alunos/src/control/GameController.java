@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * Baseado em material do Prof. Jose Fernando Junior
  */
 public class GameController {
+    
     public void drawAllElements(ArrayList<Element> elemArray, Graphics g){
         for(int i=2; i<elemArray.size(); i++){
             elemArray.get(i).autoDraw(g);
@@ -55,34 +56,17 @@ public class GameController {
                 else if(eTemp.isTransposable())
                     e.remove(eTemp);
         }
-        int l = 4;
-        //Seta os graus de liberdade dos fantasmas
-        for(int i = 1; i < e.size(); i++){
-            eTemp = e.get(i);
-            if(!eTemp.isTransposable()){
-                if(fpinky.overlapUp(eTemp)){
-                    fpinky.setUP(false);
-                    l--;
-                }
-                if(fpinky.overlapDown(eTemp)){
-                    fpinky.setDOWN(false);
-                    l--;
-                }
-                if(fpinky.overlapLeft(eTemp)){
-                    fpinky.setLEFT(false);
-                    l--;
-                }
-                if(fpinky.overlapRight(eTemp)){
-                    fpinky.setRIGHT(false);
-                    l--;
-                }
-            }
-        }
-        fpinky.setGrauDeLiberdade(l);
+        
         
         
         //Chama a movimentação.
         ppacman.move();
+        
+        
+        if(fpinky.getMovDirection() == 0){
+            fpinky.randomDirection();
+        }
+        
         fpinky.moveAleatorio();
         
     }

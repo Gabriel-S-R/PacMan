@@ -22,7 +22,7 @@ public abstract class Fantasma extends Element implements Serializable{
     private boolean RIGHT;
     
     private int grauDeLiberdade;
-    
+    public int contador;
     //Construtor
     public Fantasma(String imageName){
         super(imageName);
@@ -89,130 +89,43 @@ public abstract class Fantasma extends Element implements Serializable{
     }
     
     
-    public void moveAleatorio(){
+    public void randomDirection(){
             Random gerador = new Random();
             
-            if(this.getGrauDeLiberdade() == 1){
-                //1 grau de liberdade
-                if(!this.getDOWN() && !this.getLEFT() && this.getRIGHT()){
-                    this.moveUp();
-               }
-                if(!this.getUP() && !this.getLEFT() && this.getRIGHT()){
-                    this.moveDown();
-                }
-                if(!this.getDOWN() && !this.getUP() && this.getRIGHT()){
-                    this.moveLeft();
-                }
-                if(!this.getDOWN() && !this.getLEFT() && this.getUP()){
-                    this.moveRight();
-                }
-            }
-            if(this.getGrauDeLiberdade() == 2){
-                //2 graus de liberdade
-                if(!this.getUP() && !this.getRIGHT()){
-                    if(gerador.nextInt(2) == 0)
-                        this.moveDown();
-                    else
-                        this.moveLeft();
-                }
+            int j = gerador.nextInt(4000);
             
-                if(!this.getUP() && !this.getLEFT()){
-                    if(gerador.nextInt(2) ==0)
-                        this.moveDown();
-                    else
-                        this.moveRight();
-                }
+            if(j>0 && j<1000)
+            this.setMovDirection(1);
             
-                if(!this.getUP() && !this.getDOWN()){
-                    if(gerador.nextInt(2) == 0)
-                        this.moveLeft();
-                    else
-                        this.moveRight();
-                }
+            if(j>1000 && j<2000)
+            this.setMovDirection(2);
             
-                if(!this.getLEFT() && !this.getRIGHT()){
-                    if(gerador.nextInt(2) ==0)
-                        this.moveDown();
-                    else
-                        this.moveUp();
-                }
+            if(j>2000 && j<3000)
+            this.setMovDirection(3);
             
-                if(!this.getLEFT() && !this.getDOWN()){
-                    if(gerador.nextInt(2) == 0)
-                        this.moveRight();
-                    else
-                        this.moveUp();
-                }
+            if(j>3000 && j<4000)
+            this.setMovDirection(4);
+    }
             
-                if(!this.getDOWN() && !this.getRIGHT()){
-                    if(gerador.nextInt(2) == 0)
-                        this.moveLeft();
-                    else
-                        this.moveUp();
-                }
-            }
-            if(this.getGrauDeLiberdade() == 3){
-            //3 graus de liberdade
-            if(!this.getUP()){
-                int aux = gerador.nextInt(3);
-                switch(aux){
-                    case 0:
-                        this.moveLeft();
-                        break;
-                    case 1:
-                        this.moveDown();
-                        break;
-                    case 2:
-                        this.moveRight();
-                }
-            }
-            
-            if(!this.getRIGHT()){
-                int aux = gerador.nextInt(3);
-                switch(aux){
-                    case 0:
-                        this.moveLeft();
-                        break;
-                    case 1:
-                        this.moveDown();
-                        break;
-                    case 2:
-                        this.moveUp();
-                }
-            }
-            
-            if(!this.getDOWN()){
-                int aux = gerador.nextInt(3);
-                switch(aux){
-                    case 0:
-                        this.moveLeft();
-                        break;
-                    case 1:
-                        this.moveUp();
-                        break;
-                    case 2:
-                        this.moveRight();
-                }
-            }
-            
-            if(!this.getLEFT()){
-                int aux = gerador.nextInt(3);
-                switch(aux){
-                    case 0:
-                        this.moveUp();
-                        break;
-                    case 1:
-                        this.moveDown();
-                        break;
-                    case 2:
-                        this.moveRight();
-                }
-            }
-            }
-            if(this.getGrauDeLiberdade() == 4)
+    public void moveAleatorio(){        
+            switch (movDirection) {
+            case MOVE_LEFT:
+                this.moveLeft();
+                break;
+            case MOVE_RIGHT:
+                this.moveRight();
+                break;
+            case MOVE_UP:
                 this.moveUp();
-            if(this.getGrauDeLiberdade() == 0)
-                this.setMovDirection(0);
+                break;
+            case MOVE_DOWN:
+                this.moveDown();
+                break;
+            default:
+                break;
+        }
+            
+  
     }
     
 }
