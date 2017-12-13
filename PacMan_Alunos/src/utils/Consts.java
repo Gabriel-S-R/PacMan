@@ -19,6 +19,7 @@ public class Consts {
     
     public static final int DELAY = 20;
     public static final int TIMER_FOGO = 40;
+    public static final int TIMER_FRUTA = 50;
     
     public static final int HEADER_SIZE = 2;
 }

@@ -19,6 +19,7 @@ public class Skull extends Element{
         this.contIntervals = 0;
     }
 
+    @Override
     public void autoDraw(Graphics g) {
         Drawing.draw(g, this.imageIcon, pos.getY(), pos.getX());
 
