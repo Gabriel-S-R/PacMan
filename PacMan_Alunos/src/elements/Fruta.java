@@ -1,22 +1,23 @@
 package elements;
 
+import utils.Drawing;
 import java.awt.Graphics;
 import java.io.Serializable;
-import utils.Drawing;
-
+import utils.Position;
 /**
  *
- * @author mmiranda
+ * @author Gabriel
  */
-public class Pacdots extends Element implements Serializable{
-    //Construtor
-    public Pacdots(String imageName){
+public class Fruta extends Element implements Serializable{
+    
+    public Fruta(String imageName) {
         super(imageName);
         this.isMortal = false;
+        pos.setPosition(3, 0);
     }
     
     @Override
-    public void autoDraw(Graphics g) {
+    public void autoDraw(Graphics g){
         Drawing.draw(g, this.imageIcon, pos.getY(), pos.getX());
     }
 }
