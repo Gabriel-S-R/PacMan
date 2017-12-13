@@ -107,10 +107,6 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         Fruta f = new Fruta("fruta.png");
         f.setTimerFruta();
         
-        Bloco vbloco = new Bloco("blocovertical.png");
-                vbloco.setPosition(5, 1);
-                this.addElement(vbloco);
-        
     }
     
     public final void addElement(Element elem) {
@@ -170,14 +166,19 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             pacman.setMovDirection(pacman.MOVE_UP);
+            pinky.setMovDirection(pacman.MOVE_UP);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             pacman.setMovDirection(pacman.MOVE_DOWN);
+            pinky.setMovDirection(pacman.MOVE_DOWN);
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             pacman.setMovDirection(pacman.MOVE_LEFT);
+            pinky.setMovDirection(pacman.MOVE_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             pacman.setMovDirection(pacman.MOVE_RIGHT);
+            pinky.setMovDirection(pacman.MOVE_RIGHT);
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             pacman.setMovDirection(pacman.STOP);
+            pinky.setMovDirection(pacman.STOP);
         }
         
         //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/

@@ -21,8 +21,6 @@ public abstract class Fantasma extends Element implements Serializable{
     private boolean LEFT;
     private boolean RIGHT;
     
-    private int grauDeLiberdade;
-    public int contador;
     //Construtor
     public Fantasma(String imageName){
         super(imageName);
@@ -32,14 +30,7 @@ public abstract class Fantasma extends Element implements Serializable{
     //Métodos
     public abstract void move();
     
-    public int getGrauDeLiberdade(){
-        return this.grauDeLiberdade;
-    }
-    
-    public void setGrauDeLiberdade(int grauDeLiberdade){
-        this.grauDeLiberdade = grauDeLiberdade;
-    }
-    
+
     public boolean getPelletOn(){
         return this.pelletOn;
     }
