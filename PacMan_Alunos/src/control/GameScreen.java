@@ -1,5 +1,7 @@
 package control;
 
+import elements.Fantasma;
+import elements.Pinky;
 import elements.Pacdots;
 import elements.Fruta;
 import elements.Pacman;
@@ -27,6 +29,7 @@ import java.util.logging.Logger;
 public class GameScreen extends javax.swing.JFrame implements KeyListener {
     
     private final Pacman pacman;
+    private final Pinky pinky;
     private final ArrayList<Element> elemArray;                        //Array que representa os elementos da interface.
     private final GameController controller = new GameController();    
 
@@ -47,7 +50,14 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         pacman = new Pacman("pacman.png");
         pacman.setPosition(0, 0);
         this.addElement(pacman); 
-            
+        
+        //Fantasmas
+        
+            //Pinky
+        pinky = new Pinky("pinky.png");
+        pinky.setPosition(7, 7);
+        this.addElement(pinky);
+        
         //Pacdots
         for(int i=1; i<Consts.NUM_CELLS; i = i+2){
             for(int j=1; j<Consts.NUM_CELLS;j = j+2){
@@ -56,11 +66,12 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
                this.addElement(pacdot); 
             }
         }
-          
+        
         //Fruta
         Fruta fruta = new Fruta("fruta.png");
         fruta.setPosition(3, 1.06);
         this.addElement(fruta);
+        
     }
     
     public final void addElement(Element elem) {
@@ -120,14 +131,19 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             pacman.setMovDirection(pacman.MOVE_UP);
+            pinky.setMovDirection(pinky.MOVE_UP);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             pacman.setMovDirection(pacman.MOVE_DOWN);
+            pinky.setMovDirection(pinky.MOVE_DOWN);
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             pacman.setMovDirection(pacman.MOVE_LEFT);
+            pinky.setMovDirection(pinky.MOVE_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             pacman.setMovDirection(pacman.MOVE_RIGHT);
+            pinky.setMovDirection(pinky.MOVE_RIGHT);
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             pacman.setMovDirection(pacman.STOP);
+            pinky.setMovDirection(pinky.STOP);
         }
         
         //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/

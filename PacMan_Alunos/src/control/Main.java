@@ -8,6 +8,7 @@ package control;
 #Power pellets
 #Parades
 #Save
+#Arrumar overlap para pontuação
 */
 public class Main {
 

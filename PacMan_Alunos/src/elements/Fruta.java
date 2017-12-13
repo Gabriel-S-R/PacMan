@@ -3,11 +3,7 @@ package elements;
 import utils.Drawing;
 import java.awt.Graphics;
 import java.io.Serializable;
-import utils.Position;
-/**
- *
- * @author Gabriel
- */
+
 public class Fruta extends Element implements Serializable{
     
     public Fruta(String imageName) {
