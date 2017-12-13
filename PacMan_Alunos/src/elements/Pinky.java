@@ -36,4 +36,8 @@ public class Pinky extends Fantasma implements Serializable{
         Drawing.draw(g, this.imageIcon, pos.getY(), pos.getX());
     }
     
+    public void backToLastPosition(){
+        this.pos.comeBack();
+    }
+    
 }

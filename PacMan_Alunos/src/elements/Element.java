@@ -45,14 +45,66 @@ public abstract class Element implements Serializable{
         double xDist = Math.abs(elem.pos.getX() - this.pos.getX());
         double yDist = Math.abs(elem.pos.getY() - this.pos.getY());
         
-        if (xDist < 0.8 && yDist < 0.8){
-            Element.incrementPontuacao();
+        if (xDist < 1 && yDist < 1){
+            if(elem.isMortal == false && elem.isTransposable == true)
+                Element.incrementPontuacao();
+            
             return true;
         }         
         else
             return false;
     }
-
+    
+    public boolean overlapFantasma(Element elem) {
+        double xDist = Math.abs(elem.pos.getX() - this.pos.getX());
+        double yDist = Math.abs(elem.pos.getY() - this.pos.getY());
+        
+        if (xDist < 0.8 && yDist < 0.8){
+            if(elem.isMortal == false && elem.isTransposable == true)
+                Element.incrementPontuacao();
+            
+            return true;
+        }         
+        else
+            return false;
+    }
+    
+    public boolean overlapUp(Element elem){
+        double xDist = (elem.pos.getX() - this.pos.getX());
+        
+        if(xDist < 0 && Math.abs(xDist) < 1)
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean overlapDown(Element elem){
+        double xDist = (elem.pos.getX() - this.pos.getX());
+        
+        if(xDist > 0 && Math.abs(xDist) < 1)
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean overlapLeft(Element elem){
+        double yDist = (elem.pos.getY() - this.pos.getY());
+        
+        if(yDist < 0 && Math.abs(yDist) < 1)
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean overlapRight(Element elem){
+        double yDist = (elem.pos.getY() - this.pos.getY());
+        
+        if(yDist > 0 && Math.abs(yDist) < 1)
+            return true;
+        else
+            return false;
+    }
+    
     public String getStringPosition() {
         return ("(" + pos.getX() + ", " + pos.getY() + ")");
     }

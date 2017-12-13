@@ -39,20 +39,51 @@ public class GameController {
             return;
         }
         
+        if (!isValidPosition(e, fpinky)) {
+            fpinky.backToLastPosition();
+            fpinky.setMovDirection(fpinky.STOP);
+            return;
+        }
+        
         //Caso um elemento seja transponível, ele some quando em contato com o pacman.
         Element eTemp;
         for(int i = 1; i < e.size(); i++){
             eTemp = e.get(i);
             if(ppacman.overlap(eTemp))
                 if(eTemp.isMortal())
-                    ppacman.setPosition(0, 0);
+                    ppacman.setPosition(3, 2);
                 else if(eTemp.isTransposable())
                     e.remove(eTemp);
         }
+        int l = 4;
+        //Seta os graus de liberdade dos fantasmas
+        for(int i = 1; i < e.size(); i++){
+            eTemp = e.get(i);
+            if(!eTemp.isTransposable()){
+                if(fpinky.overlapUp(eTemp)){
+                    fpinky.setUP(false);
+                    l--;
+                }
+                if(fpinky.overlapDown(eTemp)){
+                    fpinky.setDOWN(false);
+                    l--;
+                }
+                if(fpinky.overlapLeft(eTemp)){
+                    fpinky.setLEFT(false);
+                    l--;
+                }
+                if(fpinky.overlapRight(eTemp)){
+                    fpinky.setRIGHT(false);
+                    l--;
+                }
+            }
+        }
+        fpinky.setGrauDeLiberdade(l);
+        
         
         //Chama a movimentação.
         ppacman.move();
-        fpinky.move();
+        fpinky.moveAleatorio();
         
     }
     public boolean isValidPosition(ArrayList<Element> elemArray, Element elem){

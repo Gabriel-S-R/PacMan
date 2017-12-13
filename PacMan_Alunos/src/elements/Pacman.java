@@ -57,5 +57,5 @@ public class Pacman extends Element implements Serializable {
                 break;
         }
     }
-    
+   
 }
