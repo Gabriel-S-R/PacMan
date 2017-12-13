@@ -13,7 +13,6 @@ public class Fruta extends Element implements Serializable{
     public Fruta(String imageName) {
         super(imageName);
         this.isMortal = false;
-        pos.setPosition(3, 0);
     }
     
     @Override

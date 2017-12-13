@@ -1,7 +1,7 @@
 package control;
 
 import elements.Pacdots;
-import elements.Skull;
+import elements.Fruta;
 import elements.Pacman;
 import elements.Element;
 import utils.Consts;
@@ -43,12 +43,12 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         elemArray = new ArrayList<Element>();
 
         /*Cria e adiciona elementos*/
+        //PacMan
         pacman = new Pacman("pacman.png");
         pacman.setPosition(0, 0);
         this.addElement(pacman); 
             
-        
-        
+        //Pacdots
         for(int i=1; i<Consts.NUM_CELLS; i = i+2){
             for(int j=1; j<Consts.NUM_CELLS;j = j+2){
                Pacdots pacdot = new Pacdots("pacdot.png");
@@ -57,6 +57,10 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
             }
         }
           
+        //Fruta
+        Fruta fruta = new Fruta("fruta.png");
+        fruta.setPosition(3, 1.06);
+        this.addElement(fruta);
     }
     
     public final void addElement(Element elem) {
@@ -94,7 +98,7 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         this.controller.drawAllElements(elemArray, g2);
         this.controller.processAllElements(elemArray);
         this.setTitle("-> Cell: " + pacman.getStringPosition());
-        
+       
         g.dispose();
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
