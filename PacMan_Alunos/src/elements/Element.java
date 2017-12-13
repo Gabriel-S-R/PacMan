@@ -46,11 +46,12 @@ public abstract class Element implements Serializable{
         double yDist = Math.abs(elem.pos.getY() - this.pos.getY());
         
         if (xDist < 0.8 && yDist < 0.8){
-            if(elem.isMortal == false && elem.isTransposable == true)
-                Element.incrementPontuacao();
-            
+            if(elem.isMortal == false && elem.isTransposable == true && elem instanceof Pacdots)
+                Element.incrementPontuacaoPacdot();     
+            if(elem.isMortal == false && elem.isTransposable == true && elem instanceof Fruta)
+                Element.incrementPontuacaoFruta();
             return true;
-        }         
+            }            
         else
             return false;
     }
@@ -60,8 +61,8 @@ public abstract class Element implements Serializable{
         double yDist = Math.abs(elem.pos.getY() - this.pos.getY());
         
         if (xDist < 0.8 && yDist < 0.8){
-            if(elem.isMortal == false && elem.isTransposable == true)
-                Element.incrementPontuacao();
+           // if(elem.isMortal == false && elem.isTransposable == true)
+              //  Element.incrementPontuacao();
             
             return true;
         }         
@@ -147,9 +148,13 @@ public abstract class Element implements Serializable{
         return this.pos.moveLeft();
     }
     
-    public static void incrementPontuacao(){
+    public static void incrementPontuacaoPacdot(){
         Element.pontuacao += 10;
     } 
+    
+    public static void incrementPontuacaoFruta(){
+        Element.pontuacao += 100;
+    }
     
      public static int getPontuacao(){
         return Element.pontuacao;
