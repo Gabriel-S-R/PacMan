@@ -2,6 +2,7 @@ package control;
 
 import elements.Pinky;
 import elements.Element;
+import elements.Pacdots;
 import elements.Pacman;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -55,8 +56,15 @@ public class GameController {
                     Element.perdeuVida();
                     ppacman.setPosition(4, 2);
                 }
-                else if(eTemp.isTransposable())
+                else if(eTemp.isTransposable()){
                     e.remove(eTemp);
+                    if(eTemp instanceof Pacdots){
+                       System.out.println(Pacdots.getNumeroPacdots());
+                       Pacdots.removerPacdot();
+                       if(Pacdots.getNumeroPacdots() == 0)
+                           System.out.println("1");
+                    }
+                }
         }
         
         

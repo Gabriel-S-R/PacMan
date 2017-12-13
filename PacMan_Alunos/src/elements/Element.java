@@ -48,7 +48,7 @@ public abstract class Element implements Serializable{
         
         if (xDist < 0.8 && yDist < 0.8){
             if(elem.isMortal == false && elem.isTransposable == true && elem instanceof Pacdots)
-                Element.incrementPontuacaoPacdot();     
+                Element.incrementPontuacaoPacdot();
             if(elem.isMortal == false && elem.isTransposable == true && elem instanceof Fruta)
                 Element.incrementPontuacaoFruta();
             return true;
