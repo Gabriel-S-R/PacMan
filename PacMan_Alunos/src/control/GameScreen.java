@@ -96,7 +96,6 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         //Pacdots
         for(int i=3; i<Consts.NUM_CELLS; i = i+2){
             for(int j=1; j<Consts.NUM_CELLS;j = j+2){
-               
                Pacdots pacdot = new Pacdots("pacdot.png");
                pacdot.setPosition(i, j);
                this.addElement(pacdot);
