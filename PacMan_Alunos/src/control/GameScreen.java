@@ -1,5 +1,6 @@
 package control;
 
+import control.Stages;
 import elements.Bloco;
 import elements.Pinky;
 import elements.Pacdots;
@@ -30,8 +31,9 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     
     private final Pacman pacman;
     private final Pinky pinky;
-    private final ArrayList<Element> elemArray;                        //Array que representa os elementos da interface.
-    private final GameController controller = new GameController();    
+    //private final ArrayList<Element> arrayElem;                        //Array que representa os elementos da interface.
+    private final GameController controller = new GameController();   
+    Stages stages = new Stages(1);
     Timer timer;
 
     public GameScreen() {
@@ -44,77 +46,76 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         this.setSize(Consts.NUM_CELLS * Consts.CELL_SIZE + getInsets().left + getInsets().right,
                      Consts.NUM_CELLS * Consts.CELL_SIZE + getInsets().top + getInsets().bottom);
 
-        elemArray = new ArrayList<Element>();
-
+      //  elemArray = new ArrayList<Element>();
         /*Cria e adiciona elementos*/
         //PacMan
         pacman = new Pacman("pacman.png");
-        pacman.setPosition(4, 2);
-        this.addElement(pacman); 
+        //pacman.setPosition(4, 2);
+       // stages.elemArray.add(pacman); 
         
         //Fantasmas
         
             //Pinky
         pinky = new Pinky("pinky.png");
-        pinky.setPosition(12, 13);
-        this.addElement(pinky);
+       // pinky.setPosition(12, 13);
+       // stages.elemArray.add(pinky);
         
         //Blocos horizontais
-        for(int i=0; i<Consts.NUM_CELLS; i++){
-            Bloco hbloco = new Bloco("blocohorizontal.png");
-            hbloco.setPosition(2, i);
-            this.addElement(hbloco);
-        }
+   //     for(int i=0; i<Consts.NUM_CELLS; i++){
+ //           Bloco hbloco = new Bloco("blocohorizontal.png");
+//            hbloco.setPosition(2, i);
+   //         this.addElement(hbloco);
+   //     }
         
-        for(int i=0; i<Consts.NUM_CELLS; i++){
-            Bloco hbloco = new Bloco("blocohorizontal.png");
-            hbloco.setPosition(14, i);
-            this.addElement(hbloco);
-        }
+   //     for(int i=0; i<Consts.NUM_CELLS; i++){
+    //        Bloco hbloco = new Bloco("blocohorizontal.png");
+    //        hbloco.setPosition(14, i);
+    //        this.addElement(hbloco);
+    //    }
         
         //Blocos verticais
-        for(int i=3; i<Consts.NUM_CELLS-1; i++){
-            Bloco vbloco = new Bloco("blocovertical.png");
-            vbloco.setPosition(i, 0);
-            this.addElement(vbloco);
-        }
-        for(int i=3; i<Consts.NUM_CELLS-1; i++){
-            Bloco vbloco = new Bloco("blocovertical.png");
-            vbloco.setPosition(i, 14);
-            this.addElement(vbloco);
-        }
+    //    for(int i=3; i<Consts.NUM_CELLS-1; i++){
+   //         Bloco vbloco = new Bloco("blocovertical.png");
+   //         vbloco.setPosition(i, 0);
+   //         this.addElement(vbloco);
+   //     }
+   //     for(int i=3; i<Consts.NUM_CELLS-1; i++){
+    //        Bloco vbloco = new Bloco("blocovertical.png");
+   //         vbloco.setPosition(i, 14);
+    //        this.addElement(vbloco);
+    //    }
         
-        for(int i=3; i<14; i = i+2){
-            for(int j=2; j<14; j = j+2){
-                Bloco vbloco = new Bloco("blocovertical.png");
-                vbloco.setPosition(i, j);
-                this.addElement(vbloco);
-            }
-        }
+      //  for(int i=3; i<14; i = i+2){
+   //         for(int j=2; j<14; j = j+2){
+     //           Bloco vbloco = new Bloco("blocovertical.png");
+     //           vbloco.setPosition(i, j);
+     //           this.addElement(vbloco);
+     //       }
+   //     }
         
         
         //Pacdots
-        for(int i=3; i<Consts.NUM_CELLS; i = i+2){
-            for(int j=1; j<Consts.NUM_CELLS;j = j+2){
-               Pacdots pacdot = new Pacdots("pacdot.png");
-               pacdot.setPosition(i, j);
-               this.addElement(pacdot);
-               Pacdots.adicionarPacdot();
-            }
-        }
+     //   for(int i=3; i<Consts.NUM_CELLS; i = i+2){
+     //       for(int j=1; j<Consts.NUM_CELLS;j = j+2){
+     //          Pacdots pacdot = new Pacdots("pacdot.png");
+     //          pacdot.setPosition(i, j);
+      //         this.addElement(pacdot);
+       //        Pacdots.adicionarPacdot();
+     //       }
+    //    }
        
         //Fruta
-        Fruta f = new Fruta("fruta.png");
-        f.setTimerFruta();
+    //    Fruta f = new Fruta("fruta.png");
+    //    f.setTimerFruta();
         
     }
     
     public final void addElement(Element elem) {
-        elemArray.add(elem);
+        stages.elemArray.add(elem);
     }
     
     public void removeElement(Element elem) {
-        elemArray.remove(elem);
+        stages.elemArray.remove(elem);
     }
     
     @Override
@@ -141,9 +142,9 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
             }
         }
         
-        this.controller.drawAllElements(elemArray, g2);
-        this.controller.processAllElements(elemArray);
-        this.setTitle("-> Cell: " + pacman.getStringPosition());
+        this.controller.drawAllElements(stages.elemArray, g2);
+        this.controller.processAllElements(stages.elemArray);
+       // this.setTitle("-> Cell: " + pacman.getStringPosition());
        
         g.dispose();
         g2.dispose();
@@ -165,20 +166,20 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            pacman.setMovDirection(pacman.MOVE_UP);
-            pinky.setMovDirection(pacman.MOVE_UP);
+            stages.pacman.setMovDirection(pacman.MOVE_UP);
+            stages.pinky.setMovDirection(pacman.MOVE_UP);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            pacman.setMovDirection(pacman.MOVE_DOWN);
-            pinky.setMovDirection(pacman.MOVE_DOWN);
+            stages.pacman.setMovDirection(pacman.MOVE_DOWN);
+            stages.pinky.setMovDirection(pacman.MOVE_DOWN);
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            pacman.setMovDirection(pacman.MOVE_LEFT);
-            pinky.setMovDirection(pacman.MOVE_LEFT);
+            stages.pacman.setMovDirection(pacman.MOVE_LEFT);
+            stages.pinky.setMovDirection(pacman.MOVE_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            pacman.setMovDirection(pacman.MOVE_RIGHT);
-            pinky.setMovDirection(pacman.MOVE_RIGHT);
+            stages.pacman.setMovDirection(pacman.MOVE_RIGHT);
+            stages.pinky.setMovDirection(pacman.MOVE_RIGHT);
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            pacman.setMovDirection(pacman.STOP);
-            pinky.setMovDirection(pacman.STOP);
+            stages.pacman.setMovDirection(pacman.STOP);
+            stages.pinky.setMovDirection(pacman.STOP);
         }
         
         //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/

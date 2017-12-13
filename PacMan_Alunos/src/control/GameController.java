@@ -62,7 +62,7 @@ public class GameController {
                        System.out.println(Pacdots.getNumeroPacdots());
                        Pacdots.removerPacdot();
                        if(Pacdots.getNumeroPacdots() == 0)
-                           System.out.println("1");
+                           System.out.println("Uhul");
                     }
                 }
         }
