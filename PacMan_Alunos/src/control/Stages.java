@@ -1,5 +1,5 @@
 package control;
-
+import elements.Blinky;
 import elements.Bloco;
 import elements.Element;
 import elements.Fruta;
@@ -18,7 +18,7 @@ public class Stages {
     protected final ArrayList<Element> elemArray;
     protected final Pacman pacman;
     protected final Pinky pinky;
-    
+    protected final Blinky blinky;
     public Stages(int numeroStage){
         elemArray = new ArrayList<Element>();
         pacman = new Pacman("pacman.png");
@@ -27,7 +27,12 @@ public class Stages {
             
         pinky = new Pinky("pinky.png");
         pinky.setPosition(12, 13);
-         elemArray.add(pinky);
+        elemArray.add(pinky);
+         
+        blinky = new Blinky("blinky.png");
+        blinky.setPosition(12, 8);
+        elemArray.add(blinky);
+         
         if(numeroStage == 1){       
                      
              //Blocos horizontais                      

@@ -16,10 +16,10 @@ public abstract class Fantasma extends Element implements Serializable{
     
     private boolean pelletOn = false;     //Power pellet on ou off?
     
-    private boolean UP;
-    private boolean DOWN;
-    private boolean LEFT;
-    private boolean RIGHT;
+    private boolean UP = true;
+    private boolean DOWN = true;
+    private boolean LEFT = true;
+    private boolean RIGHT = true;
     
     //Construtor
     public Fantasma(String imageName){
@@ -28,7 +28,24 @@ public abstract class Fantasma extends Element implements Serializable{
     }
     
     //Métodos
-    public abstract void move();
+    public void move(){
+        switch (this.getMovDirection()) {
+            case MOVE_LEFT:
+                this.moveLeft();
+                break;
+            case MOVE_RIGHT:
+                this.moveRight();
+                break;
+            case MOVE_UP:
+                this.moveUp();
+                break;
+            case MOVE_DOWN:
+                this.moveDown();
+                break;
+            default:
+                break;
+        }
+    }
     
 
     public boolean getPelletOn(){

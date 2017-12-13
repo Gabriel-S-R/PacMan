@@ -1,5 +1,6 @@
 package control;
 
+import elements.Blinky;
 import elements.Pinky;
 import elements.Element;
 import elements.Pacdots;
@@ -33,6 +34,7 @@ public class GameController {
         //inicializa os objetos do cenário.
         Pacman ppacman = (Pacman)e.get(0);
         Pinky fpinky = (Pinky)e.get(1);
+        Blinky fblinky = (Blinky)e.get(2);
         
         //Caso um elemento seja intransponível, o pacman é barrado.
         if (!isValidPosition(e, ppacman)) {
@@ -44,6 +46,12 @@ public class GameController {
         if (!isValidPosition(e, fpinky)) {
             fpinky.backToLastPosition();
             fpinky.setMovDirection(fpinky.STOP);
+            return;
+        }
+        
+        if (!isValidPosition(e, fblinky)) {
+            fblinky.backToLastPosition();
+            fblinky.setMovDirection(fblinky.STOP);
             return;
         }
         
@@ -77,7 +85,12 @@ public class GameController {
             fpinky.randomDirection();
         }
         
-        fpinky.moveAleatorio();
+        fpinky.move();
+        
+        if(fblinky.getMovDirection() == 0)
+            fblinky.pacPos(ppacman);
+        
+        fblinky.move();
         
     }
     public boolean isValidPosition(ArrayList<Element> elemArray, Element elem){
