@@ -43,6 +43,7 @@ public class Fruta extends Element implements Serializable{
             public void run() {
                 Drawing.getGameScreen().addElement(fruta);
                 setTimer(fruta);
+                setTimerFruta();
             }
         }, 4000);
     } 
