@@ -46,7 +46,7 @@ public abstract class Element implements Serializable{
         double yDist = Math.abs(elem.pos.getY() - this.pos.getY());
         
         if (xDist < 0.8 && yDist < 0.8){
-            Element.pontuacao += 10;
+            Element.incrementPontuacao();
             return true;
         }         
         else
