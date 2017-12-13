@@ -52,5 +52,10 @@ public class Drawing {
         word.addAttribute(TextAttribute.FONT, font);
         g.setColor(Color.green);
         g.drawString(word.getIterator(), Consts.CELL_SIZE, Consts.CELL_SIZE);
+        
+        word = new AttributedString("Lifes: " + Element.getVidas());
+        word.addAttribute(TextAttribute.FONT, font);
+        g.setColor(Color.green);
+        g.drawString(word.getIterator(), (Consts.NUM_CELLS - 5)*Consts.CELL_SIZE, Consts.CELL_SIZE);
     }
 }

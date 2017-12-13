@@ -51,8 +51,10 @@ public class GameController {
         for(int i = 1; i < e.size(); i++){
             eTemp = e.get(i);
             if(ppacman.overlap(eTemp))
-                if(eTemp.isMortal())
-                    ppacman.setPosition(3, 2);
+                if(eTemp.isMortal()){
+                    Element.perdeuVida();
+                    ppacman.setPosition(4, 2);
+                }
                 else if(eTemp.isTransposable())
                     e.remove(eTemp);
         }

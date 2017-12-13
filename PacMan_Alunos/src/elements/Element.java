@@ -22,6 +22,7 @@ public abstract class Element implements Serializable{
     protected boolean isTransposable; // Pode passar por cima?
     protected boolean isMortal;       // Se encostar, morre?
     protected static int pontuacao = 0;
+    protected static int vidas = 3;
 
     protected Element(String imageName) {
         this.pos = new Position(1, 1);
@@ -159,4 +160,12 @@ public abstract class Element implements Serializable{
      public static int getPontuacao(){
         return Element.pontuacao;
     }
+     
+     public static int getVidas(){
+         return Element.vidas;
+     }
+     
+     public static void perdeuVida(){
+         Element.vidas--;
+     }
 }
