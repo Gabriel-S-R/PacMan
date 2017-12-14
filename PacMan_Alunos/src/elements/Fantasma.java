@@ -114,26 +114,14 @@ public abstract class Fantasma extends Element implements Serializable{
             if(j>3000 && j<=4000)
                 this.setMovDirection(4);
     }
-            
-    public void moveAleatorio(){        
-            switch (movDirection) {
-            case MOVE_LEFT:
-                this.moveLeft();
-                break;
-            case MOVE_RIGHT:
-                this.moveRight();
-                break;
-            case MOVE_UP:
-                this.moveUp();
-                break;
-            case MOVE_DOWN:
-                this.moveDown();
-                break;
-            default:
-                break;
-        }
-            
-  
+    public boolean isFar(Fantasma fant){
+        double xDist = Math.abs(fant.pos.getX() - this.pos.getX());
+        double yDist = Math.abs(fant.pos.getY() - this.pos.getY());
+        
+        if(xDist > 8 || yDist > 8)
+            return true;
+        else
+            return false;
     }
     
 }

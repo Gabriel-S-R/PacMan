@@ -1,4 +1,6 @@
 package control;
+
+import elements.Inky;
 import elements.Blinky;
 import elements.Bloco;
 import elements.Element;
@@ -19,20 +21,25 @@ public class Stages {
     protected final Pacman pacman;
     protected final Pinky pinky;
     protected final Blinky blinky;
+    protected final Inky inky;
     public Stages(int numeroStage){
         elemArray = new ArrayList<Element>();
         pacman = new Pacman("pacman.png");
-        pacman.setPosition(4, 2);
+        pacman.setPosition(3, 1);
         elemArray.add(pacman); 
             
         pinky = new Pinky("pinky.png");
-        pinky.setPosition(12, 13);
+        pinky.setPosition(11, 13);
         elemArray.add(pinky);
          
         blinky = new Blinky("blinky.png");
-        blinky.setPosition(12, 8);
+        blinky.setPosition(11, 8);
         elemArray.add(blinky);
          
+        inky = new Inky("inky.png");
+        inky.setPosition(11, 4);
+        elemArray.add(inky);
+        
         if(numeroStage == 1){       
                      
              //Blocos horizontais                      
@@ -64,7 +71,7 @@ public class Stages {
        //     Drawing.getGameScreen().addElement(vbloco);
         }
         
-        for(int i=3; i<14; i = i+2){
+        for(int i=4; i<14; i = i+2){
             for(int j=2; j<14; j = j+2){
                 Bloco vbloco = new Bloco("blocovertical.png");
                 vbloco.setPosition(i, j);

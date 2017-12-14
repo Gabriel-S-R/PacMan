@@ -1,5 +1,6 @@
 package control;
 
+import elements.Inky;
 import elements.Blinky;
 import elements.Pinky;
 import elements.Element;
@@ -18,11 +19,11 @@ import utils.Drawing;
 public class GameController {
     
     public void drawAllElements(ArrayList<Element> elemArray, Graphics g){
-        for(int i=3; i<elemArray.size(); i++){
+        for(int i=4; i<elemArray.size(); i++){
             elemArray.get(i).autoDraw(g);
         }
         
-        for(int i=0; i<3; i++){
+        for(int i=0; i<4; i++){
             elemArray.get(i).autoDraw(g);
         }
     }
@@ -36,7 +37,7 @@ public class GameController {
         Pacman ppacman = (Pacman)e.get(0);
         Pinky fpinky = (Pinky)e.get(1);
         Blinky fblinky = (Blinky)e.get(2);
-        
+        Inky finky = (Inky)e.get(3);
         //Caso um elemento seja intransponível, o pacman é barrado.
         if (!isValidPosition(e, ppacman)) {
             ppacman.backToLastPosition();
@@ -56,6 +57,12 @@ public class GameController {
             return;
         }
         
+        if (!isValidPosition(e, finky)) {
+            finky.backToLastPosition();
+            finky.setMovDirection(finky.STOP);
+            return;
+        }
+        
         //Caso um elemento seja transponível, ele some quando em contato com o pacman.
         Element eTemp;
         for(int i = 1; i < e.size(); i++){
@@ -63,7 +70,7 @@ public class GameController {
             if(ppacman.overlap(eTemp))
                 if(eTemp.isMortal()){
                     Element.perdeuVida();
-                    ppacman.setPosition(4, 2);
+                    ppacman.setPosition(3, 1);
                 }
                 else if(eTemp.isTransposable()){
                     e.remove(eTemp);
@@ -92,6 +99,15 @@ public class GameController {
             fblinky.pacPos(ppacman);
         
         fblinky.move();
+        
+        if(finky.getMovDirection() == 0){
+            if(finky.isFar(fblinky))
+                finky.randomDirection();
+            else
+                finky.pacPos(ppacman);
+        }
+        
+        finky.move();
         
     }
     public boolean isValidPosition(ArrayList<Element> elemArray, Element elem){
