@@ -21,7 +21,7 @@ public class Fruta extends Element implements Serializable{
   
     public void setTimerFruta() {
         Fruta fruta = new Fruta("fruta.png");
-        fruta.setPosition(3, 1);
+        fruta.setPosition(8, 7);
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -30,7 +30,7 @@ public class Fruta extends Element implements Serializable{
                 setTimer(fruta);
                 setTimerFruta();
             }
-        }, 45000);
+        }, 30000);
     } 
     
     public void setTimer(Fruta f) {
