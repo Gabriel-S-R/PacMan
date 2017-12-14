@@ -70,6 +70,8 @@ public class GameController {
             if(ppacman.overlap(eTemp))
                 if(eTemp.isMortal()){
                     Element.perdeuVida();
+                    if(Element.getVidas() == 0)
+                        System.exit(0);
                     ppacman.setPosition(3, 1);
                 }
                 else if(eTemp.isTransposable()){
