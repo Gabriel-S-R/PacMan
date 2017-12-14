@@ -78,7 +78,7 @@ public class GameController {
             if(ppacman.overlap(eTemp))
                 if(eTemp.isMortal()){
                     Element.perdeuVida();
-                    if(Element.getVidas() == 0)
+                  //  if(Element.getVidas() == 0)
                         System.exit(0);
                     ppacman.setPosition(3, 1);
                     fpinky.setPosition(11, 13);
@@ -93,6 +93,8 @@ public class GameController {
                        if(Pacdots.getNumeroPacdots() == 0)
                            if(Drawing.getGameScreen().getNivel() < 3)
                                 Drawing.getGameScreen().passarNivel();
+                           else
+                               return;
                     }
                 }
         }
