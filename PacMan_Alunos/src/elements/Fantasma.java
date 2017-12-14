@@ -114,9 +114,9 @@ public abstract class Fantasma extends Element implements Serializable{
             if(j>3000 && j<=4000)
                 this.setMovDirection(4);
     }
-    public boolean isFar(Fantasma fant){
-        double xDist = Math.abs(fant.pos.getX() - this.pos.getX());
-        double yDist = Math.abs(fant.pos.getY() - this.pos.getY());
+    public boolean isFar(Element elem){
+        double xDist = Math.abs(elem.pos.getX() - this.pos.getX());
+        double yDist = Math.abs(elem.pos.getY() - this.pos.getY());
         
         if(xDist > 8 || yDist > 8)
             return true;

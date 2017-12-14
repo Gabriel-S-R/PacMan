@@ -1,5 +1,6 @@
 package control;
 
+import elements.Clyde;
 import elements.Inky;
 import elements.Blinky;
 import elements.Pinky;
@@ -19,11 +20,11 @@ import utils.Drawing;
 public class GameController {
     
     public void drawAllElements(ArrayList<Element> elemArray, Graphics g){
-        for(int i=4; i<elemArray.size(); i++){
+        for(int i=5; i<elemArray.size(); i++){
             elemArray.get(i).autoDraw(g);
         }
         
-        for(int i=0; i<4; i++){
+        for(int i=0; i<5; i++){
             elemArray.get(i).autoDraw(g);
         }
     }
@@ -38,6 +39,7 @@ public class GameController {
         Pinky fpinky = (Pinky)e.get(1);
         Blinky fblinky = (Blinky)e.get(2);
         Inky finky = (Inky)e.get(3);
+        Clyde fclyde = (Clyde)e.get(4);
         //Caso um elemento seja intransponível, o pacman é barrado.
         if (!isValidPosition(e, ppacman)) {
             ppacman.backToLastPosition();
@@ -60,6 +62,12 @@ public class GameController {
         if (!isValidPosition(e, finky)) {
             finky.backToLastPosition();
             finky.setMovDirection(finky.STOP);
+            return;
+        }
+        
+        if (!isValidPosition(e, fclyde)) {
+            fclyde.backToLastPosition();
+            fclyde.setMovDirection(fclyde.STOP);
             return;
         }
         
@@ -110,6 +118,15 @@ public class GameController {
         }
         
         finky.move();
+        
+        if(fclyde.getMovDirection() == 0){
+            if(!fclyde.isFar(ppacman))
+                fclyde.randomDirection();
+            else
+                fclyde.pacPos(ppacman);
+        }
+        
+        fclyde.move();
         
     }
     public boolean isValidPosition(ArrayList<Element> elemArray, Element elem){

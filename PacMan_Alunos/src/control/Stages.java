@@ -1,5 +1,6 @@
 package control;
 
+import elements.Clyde;
 import elements.Inky;
 import elements.Blinky;
 import elements.Bloco;
@@ -22,6 +23,7 @@ public class Stages {
     protected final Pinky pinky;
     protected final Blinky blinky;
     protected final Inky inky;
+    protected final Clyde clyde;
     public Stages(int numeroStage){
         elemArray = new ArrayList<Element>();
         pacman = new Pacman("pacman.png");
@@ -39,6 +41,10 @@ public class Stages {
         inky = new Inky("inky.png");
         inky.setPosition(9, 5);
         elemArray.add(inky);
+        
+        clyde = new Clyde("clyde.png");
+        clyde.setPosition(4, 13);
+        elemArray.add(clyde);
         
         if(numeroStage == 1){       
                      
