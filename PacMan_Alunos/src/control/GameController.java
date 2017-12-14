@@ -81,6 +81,10 @@ public class GameController {
                     if(Element.getVidas() == 0)
                         System.exit(0);
                     ppacman.setPosition(3, 1);
+                    fpinky.setPosition(11, 13);
+                    fblinky.setPosition(7, 10);
+                    finky.setPosition(9, 5);
+                    fclyde.setPosition(5, 13);
                 }
                 else if(eTemp.isTransposable()){
                     e.remove(eTemp);

@@ -43,7 +43,7 @@ public class Stages {
         elemArray.add(inky);
         
         clyde = new Clyde("clyde.png");
-        clyde.setPosition(4, 13);
+        clyde.setPosition(5, 13);
         elemArray.add(clyde);
         
         if(numeroStage == 1){       
@@ -53,14 +53,12 @@ public class Stages {
             Bloco hbloco = new Bloco("blocohorizontal.png");
             hbloco.setPosition(2, i);
             elemArray.add(hbloco);
-          //  Drawing.getGameScreen().addElement(hbloco);
         }
         
         for(int i=0; i<Consts.NUM_CELLS; i++){
             Bloco hbloco = new Bloco("blocohorizontal.png");
             hbloco.setPosition(14, i);
             elemArray.add(hbloco);
-         //   Drawing.getGameScreen().addElement(hbloco);
         }
         
         //Blocos verticais
@@ -68,13 +66,11 @@ public class Stages {
             Bloco vbloco = new Bloco("blocovertical.png");
             vbloco.setPosition(i, 0);
             elemArray.add(vbloco);
-         //   Drawing.getGameScreen().addElement(vbloco);
         }
         for(int i=3; i<Consts.NUM_CELLS-1; i++){
             Bloco vbloco = new Bloco("blocovertical.png");
             vbloco.setPosition(i, 14);
             elemArray.add(vbloco);
-       //     Drawing.getGameScreen().addElement(vbloco);
         }
         
         for(int i=4; i<14; i = i+2){
@@ -82,7 +78,6 @@ public class Stages {
                 Bloco vbloco = new Bloco("blocovertical.png");
                 vbloco.setPosition(i, j);
                 elemArray.add(vbloco);
-          //      Drawing.getGameScreen().addElement(vbloco);
             }
         }
         
@@ -93,7 +88,6 @@ public class Stages {
                Pacdots pacdot = new Pacdots("pacdot.png");
                pacdot.setPosition(i, j);
                elemArray.add(pacdot);
-         //      Drawing.getGameScreen().addElement(pacdot);
                Pacdots.adicionarPacdot();
             }
         }
@@ -166,8 +160,73 @@ public class Stages {
                }
             }
         }
-        
+        }     
+        if(numeroStage == 3){
+            
+            for(int i=0; i<Consts.NUM_CELLS; i++){
+                Bloco hbloco = new Bloco("blocohorizontal.png");
+                hbloco.setPosition(2, i);
+                elemArray.add(hbloco);
+            }
+
+            for(int i=0; i<Consts.NUM_CELLS; i++){
+                Bloco hbloco = new Bloco("blocohorizontal.png");
+                hbloco.setPosition(14, i);
+                elemArray.add(hbloco);
+            }
+            for(int i=3; i<Consts.NUM_CELLS-1; i++){
+                Bloco vbloco = new Bloco("blocovertical.png");
+                vbloco.setPosition(i, 0);
+                elemArray.add(vbloco);
+            }
+            for(int i=3; i<Consts.NUM_CELLS-1; i++){
+                Bloco vbloco = new Bloco("blocovertical.png");
+                vbloco.setPosition(i, 14);
+                elemArray.add(vbloco);
+            }
+            
+            for(int i=2; i<Consts.NUM_CELLS-2; i++){
+                Bloco hbloco = new Bloco("blocohorizontal.png");
+                hbloco.setPosition(4, i);
+                elemArray.add(hbloco);
+            }
+            
+            for(int i=3; i<Consts.NUM_CELLS-3; i++){
+                Bloco hbloco = new Bloco("blocohorizontal.png");
+                hbloco.setPosition(6, i);
+                elemArray.add(hbloco);
+            }
+            
+            for(int i=4; i<Consts.NUM_CELLS-4; i++){
+                Bloco hbloco = new Bloco("blocohorizontal.png");
+                hbloco.setPosition(8, i);
+                elemArray.add(hbloco);
+            }
+            
+            for(int i=3; i<Consts.NUM_CELLS-3; i++){
+                Bloco hbloco = new Bloco("blocohorizontal.png");
+                hbloco.setPosition(10, i);
+                elemArray.add(hbloco);
+            }
+            
+            for(int i=2; i<Consts.NUM_CELLS-2; i++){
+                Bloco hbloco = new Bloco("blocohorizontal.png");
+                hbloco.setPosition(12, i);
+                elemArray.add(hbloco);
+            }
+            
+            for(int i=3; i<Consts.NUM_CELLS-2; i = i+2){
+                for(int j=1; j<Consts.NUM_CELLS;j = j+2){
+                    Pacdots pacdot = new Pacdots("pacdot.png");
+                    pacdot.setPosition(i, j);
+                    elemArray.add(pacdot);
+                    Pacdots.adicionarPacdot();
+            }
         }
+      
+        }
+        
+ 
     }
  
     

@@ -1,15 +1,4 @@
 package control;
-
-/*TODO List
-#Fantasmas
-#Stages
-#Sprites do mesmo tamanho
-#Terminar fruta
-#Power pellets
-#Parades
-#Save
-#Arrumar overlap para pontuação
-*/
 public class Main {
 
     public static void main(String[] args) {
